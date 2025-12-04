@@ -3,26 +3,28 @@ package ru.yandex.practicum.delivery.parcel;
 import java.util.Objects;
 
 public abstract class Parcel {
-    private final String description;
-    private final int weight;
-    private final String deliveryAddress;
-    private final int sendDay;
+    private String description;
+    private int weight;
+    private String deliveryAddress;
+    private int sendDay;
 
-    public Parcel (String description, int weight, String deliveryAddress, int sendDay) {
+    public Parcel (String description,
+                   int weight,
+                   String deliveryAddress,
+                   int sendDay) {
         this.description = description;
         this.weight = weight;
         this.deliveryAddress = deliveryAddress;
         this.sendDay = sendDay;
     }
 
-
-
     public void packageItem() {
         System.out.println("Посылка, " + description + ", упакована.");
     }
 
     public void deliver() {
-        System.out.println("Посылка, " + description + ", доставлена по адресу: " + deliveryAddress + ".");
+        System.out.println("Посылка, " + description
+                            + ", доставлена по адресу: " + deliveryAddress + ".");
     }
 
     protected abstract int getDeliveryCostModifier();

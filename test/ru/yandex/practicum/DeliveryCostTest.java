@@ -1,5 +1,6 @@
 package ru.yandex.practicum;
 
+import org.junit.jupiter.api.BeforeEach;
 import ru.yandex.practicum.delivery.parcel.*;
 
 import org.junit.jupiter.api.Test;
@@ -7,27 +8,36 @@ import org.junit.jupiter.api.Assertions;
 
 public class DeliveryCostTest {
 
+    private static final int EXPECTED_STANDARD_RESULT = 20;
+    private static final int EXPECTED_PERISHABLE_RESULT = 15;
+    private static final int EXPECTED_FRAGILE_RESULT = 8;
+
+    private StandardParcel standardParcel;
+    private PerishableParcel perishableParcel;
+    private FragileParcel fragileParcel;
+
+    @BeforeEach
+    public void beforeEach() {
+        standardParcel = new StandardParcel("Кроссовки", 3, "Казань", 1);
+        perishableParcel = new PerishableParcel("Молоко", 2, "Москва", 1, 5);
+        fragileParcel = new FragileParcel("Ваза", 3, "Тверь", 1);
+    }
+
     @Test
     public void shouldReturn20forStandardParcelOf10Kg() {
-        StandardParcel standardParcel = new StandardParcel("Кроссовки", 3, "Казань", 1);
-        int expectedResult = 20;
         int actualResult = standardParcel.calculateDeliveryCost();
-        Assertions.assertEquals(expectedResult, actualResult);
+        Assertions.assertEquals(EXPECTED_STANDARD_RESULT, actualResult);
     }
 
     @Test
     public void shouldReturn30forPerishableParcelOf10Kg() {
-        PerishableParcel perishableParcel = new PerishableParcel("Молоко", 2, "Москва", 1, 5);
-        int expectedResult = 15;
         int actualResult = perishableParcel.calculateDeliveryCost();
-        Assertions.assertEquals(expectedResult, actualResult);
+        Assertions.assertEquals(EXPECTED_PERISHABLE_RESULT, actualResult);
     }
 
     @Test
     public void shouldReturn40forFragileParcelOf10Kg() {
-        FragileParcel fragileParcel = new FragileParcel("Ваза", 3, "Тверь", 1);
-        int expectedResult = 8;
         int actualResult = fragileParcel.calculateDeliveryCost();
-        Assertions.assertEquals(expectedResult, actualResult);
+        Assertions.assertEquals(EXPECTED_FRAGILE_RESULT, actualResult);
     }
 }

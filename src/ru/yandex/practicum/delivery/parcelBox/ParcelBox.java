@@ -6,8 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ParcelBox <T extends Parcel>{
-    private final ArrayList<T> parcels;
-    private final int maxWeight;
+    private ArrayList<T> parcels;
+    private int maxWeight;
     private int currentWeight;
 
     public ParcelBox(int maxWeight) {

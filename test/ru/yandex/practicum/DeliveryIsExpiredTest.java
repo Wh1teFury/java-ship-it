@@ -14,6 +14,7 @@ public class DeliveryIsExpiredTest {
         boolean actualResult = perishableParcel.isExpired(20);
         Assertions.assertEquals(expectedResult, actualResult);
     }
+
     @Test
     public void shouldReturnFalseWhenPerishableParcelINotExpired() {
         PerishableParcel perishableParcel = new PerishableParcel("Творог", 10, "Пермь", 1, 10);
